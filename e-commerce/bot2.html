@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Sidebar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <py-script src="/main.py"></py-script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar styles */
+        .chat-sidebar {
+            position: fixed;
+            right: -300px; /* Initially hidden */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            height: 400px;
+            background: black;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease-in-out;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid gray;
+        }
+
+        .chat-content {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        .chat-button {
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chat-button:hover {
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Chat Sidebar -->
+    <div class="chat-sidebar" id="chatSidebar">
+        <div class="chat-header">
+            <span>Chatbot</span>
+            <i class="fa fa-times" style="cursor:pointer;" onclick="toggleChat()"></i>
+        </div>
+        <div class="chat-content">
+            <p>Welcome! How can I help you?</p>
+            <!-- Bot messages will go here -->
+        </div>
+        <input type="text" class="chat-input" placeholder="Type a message...">
+    </div>
+
+    <!-- Chat Open Button -->
+    <button class="chat-button" onclick="toggleChat()">
+        <i class="fa fa-comments"></i>
+    </button>
+
+    <script>
+        function toggleChat() {
+            var sidebar = document.getElementById("chatSidebar");
+            if (sidebar.style.right === "0px") {
+                sidebar.style.right = "-300px";
+            } else {
+                sidebar.style.right = "0px";
+            }
+        }
+    </script>
+
+</body>
+</html>
